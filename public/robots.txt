@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+
+# Sitemap location
+Sitemap: https://lounisnaitbelkacem-portfolio.vercel.app/public/sitemap.xml
