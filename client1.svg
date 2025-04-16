@@ -1,0 +1,13 @@
+<svg width="200" height="200" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="grad1" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#6c63ff;stop-opacity:0.2" />
+      <stop offset="100%" style="stop-color:#43cea2;stop-opacity:0.2" />
+    </linearGradient>
+  </defs>
+  <circle cx="100" cy="100" r="95" fill="#f5f5f5" stroke="#6c63ff" stroke-width="2" />
+  <circle cx="100" cy="80" r="40" fill="#2c2c2c" />
+  <path d="M50,120 C50,160 150,160 150,120 L150,180 L50,180 Z" fill="#2c2c2c" />
+  <text x="100" y="140" font-family="Arial" font-size="12" fill="white" text-anchor="middle">Sarah Johnson</text>
+  <text x="100" y="160" font-family="Arial" font-size="10" fill="white" text-anchor="middle">CEO, Tech Startup</text>
+</svg>
