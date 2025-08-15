@@ -1,0 +1,130 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Marktist — Waitlist</title>
+
+  <!-- your mega css -->
+  <link rel="stylesheet" href="marktist-mega.css" />
+
+  <!-- lightweight inline overrides for layout -->
+  <style>
+    :root {
+      /* helpful aliases if your CSS uses --bg etc already */
+    }
+
+    body{
+      margin:0;
+      min-height:100vh;
+      display:grid;
+      place-items:center;
+      padding:2rem;
+      background:var(--bg);
+      color:var(--text);
+      font-family:Inter,system-ui,-apple-system,"Segoe UI",Roboto,Arial;
+    }
+
+    .waitlist-wrap{
+      width:min(760px, 94vw);
+      max-width:760px;
+      display:grid;
+      gap:1rem;
+      grid-template-columns: 1fr 360px;
+      align-items:start;
+    }
+
+    .hero{
+      padding:1.25rem;
+      border-radius: var(--radius-lg);
+      background: linear-gradient(180deg, var(--elev), transparent);
+      border:1px solid var(--border);
+      box-shadow: var(--shadow-1);
+    }
+
+    .hero .h1{ margin:0 0 .4rem 0; }
+    .hero p{ margin:0; color:var(--muted); }
+
+    /* right column card */
+    .card.waitlist {
+      padding:1rem;
+      border-radius: var(--radius-lg);
+    }
+
+    .field{ margin-bottom:.65rem; }
+    .label{ font-size:.85rem; color:var(--muted); font-weight:700; margin-bottom:.25rem; display:block; }
+
+    .toasts{ position: fixed; right:16px; bottom:16px; z-index:60; display:grid; gap:.5rem; }
+
+    @media (max-width:900px){
+      .waitlist-wrap{ grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+  <main class="waitlist-wrap container">
+    <section class="hero card headered">
+      <div>
+        <h1 class="h1">Join the Marktist Waitlist</h1>
+        <p class="small">Get early access, product updates and exclusive invites. We’ll email you when we launch.</p>
+
+        <div class="mt-4">
+          <ul class="list">
+            <li class="item">
+              <div>
+                <div class="text-bold">Why join?</div>
+                <div class="small text-muted">Early beta access, priority support, founder updates.</div>
+              </div>
+            </li>
+            <li class="item">
+              <div>
+                <div class="text-bold">No spam</div>
+                <div class="small text-muted">Only launch updates and occasional product news.</div>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </div>
+      <div class="card-desc" style="text-align:right;">
+        <div class="badge">Limited spots</div>
+      </div>
+    </section>
+
+    <aside class="card waitlist">
+      <div class="card-header" style="padding:0 0 .5rem 0; margin-bottom:.6rem;">
+        <div class="card-title">Join the waitlist</div>
+        <div class="card-desc">We only need your name + email</div>
+      </div>
+
+      <form id="waitlistForm" autocomplete="off" novalidate>
+        <div class="field">
+          <label class="label" for="name">Name</label>
+          <input id="name" class="input" name="name" type="text" placeholder="Your name" required />
+        </div>
+
+        <div class="field">
+          <label class="label" for="email">Email</label>
+          <input id="email" class="input" name="email" type="email" placeholder="you@domain.com" required />
+        </div>
+
+        <div class="field">
+          <button id="submitBtn" class="btn primary block" type="submit">
+            <span id="btnText">Join Waitlist</span>
+            <span id="btnSpinner" class="spinner" style="display:none; margin-left:.6rem;"></span>
+          </button>
+        </div>
+
+        <div id="msg" class="small" style="display:none;"></div>
+      </form>
+
+      <div style="margin-top:.6rem; font-size:.8rem;" class="text-muted">
+        We store your name and email to notify you. You can unsubscribe anytime.
+      </div>
+    </aside>
+  </main>
+
+  <div class="toasts" id="toasts"></div>
+
+  <script src="script.js"></script>
+</body>
+</html>
