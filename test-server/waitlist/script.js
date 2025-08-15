@@ -52,7 +52,7 @@
     setLoading(true);
 
     try {
-      const res = await fetch(SCRIPT_WEB_APP_URL, {
+      const res = await fetch(https://script.google.com/macros/s/AKfycbwKaZYS1C_H1jg2AaEw7EVbZ-J_wCOhtdUbf4v5OaGr5-h31VRrD69MzYO125qDFemXDQ/exec, {
         method: 'POST',
         mode: 'cors',
         headers: { 'Content-Type': 'application/json' },
