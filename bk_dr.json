@@ -1,11 +1,13 @@
 [
   {
+    "id": "demo-page-001",
     "site": "lounisnaitbelkacem-portfolio.vercel.app",
     "status": "OKAY",
     "reason": "portfolio control",
     "expires": "2026-01-01T00:00:00Z"
   },
   {
+    "id": "stolen-example-002",
     "site": "example-site.com",
     "status": "NO",
     "reason": "site reported stolen - contact owner",
