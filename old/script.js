@@ -607,4 +607,5 @@ document.addEventListener('DOMContentLoaded', function() {
     document.querySelectorAll('.section-title, .section-subtitle, .about-text h3, .about-text p, .skills-text h3, .skills-text p, .service-card, .portfolio-item, .timeline-item, .testimonial-item, .contact-info, .contact-form').forEach(el => {
         el.classList.add('animate-on-scroll');
     });
+
 });
