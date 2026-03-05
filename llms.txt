@@ -1,0 +1,27 @@
+# Lounis Nait Belkacem
+
+> Jeune professionnel polyvalent combinant marketing, design graphique et stratégie digitale.
+
+## Introduction
+Lounis Nait Belkacem est un spécialiste en stratégie marketing, conception de marque (branding), design graphique et production audio. Il combine ces disciplines pour créer des expériences immersives et mener des campagnes digitales impactantes. Actuellement étudiant en marketing à la Chambre Algérienne du Commerce et de l’Industrie (CACI).
+
+## Contact
+- Email: lounisnaitbelkacem@gmail.com
+- WhatsApp: +213 672 75 03 29
+- LinkedIn: https://www.linkedin.com/in/lounis-nait-belkacem-749643298
+- Instagram: https://www.instagram.com/___lounis___?igsh=MTE1M2FxdXd5M3pvbQ==
+
+## Compétences & Outils
+- **Design Graphique & UI/UX**: Adobe Photoshop, Illustrator, Figma, Canva.
+- **Stratégie Marketing**: Campagnes Digitales, Études de Marché, Social Media.
+- **Production Audio**: Sound Design, Mixage / Mastering, Identité Sonore (FL Studio).
+- **Technologie**: Web Dev, AI tools.
+
+## Projets Récents
+- **Amélioration de Marque: Air Algérie** : Refonte de l'identité visuelle pour moderniser l'image de la compagnie aérienne.
+- **Vision BYTE** : Création visuelle conceptuelle axée sur la promotion BYTE.
+- **Info PIXELPUSH** : Suite de la création visuelle pour la campagne PIXELPUSH, explorant de nouvelles perspectives marketing.
+- **Voyage & Évasion: Travel Plane Concept** : Design destiné à une campagne publicitaire pour agence de voyage.
+- **Construction Identitaire: Polygon** : Logo et conception de marque pour un projet technologique.
+
+*(This file is specifically provided in markdown format for AI agents (LLMs) to easily ingest portfolio data following the llms.txt standard.)*
