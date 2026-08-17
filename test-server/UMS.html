@@ -200,9 +200,9 @@ textarea.input-field { min-height: 100px; resize: vertical; line-height: 1.5; }
 .toast { 
   position: fixed; bottom: 40px; left: 50%; transform: translateX(-50%) translateY(100px); 
   padding: 16px 32px; background: var(--text-primary); color: #FFF; 
-  border-radius: var(--radius-pill); font-size: 15px; font-weight: 600; z-index: 200; 
+  border-radius: var(--radius-pill); font-size: 14px; font-weight: 600; z-index: 200; 
   opacity: 0; transition: all 0.4s var(--ease-spring); 
-  box-shadow: 0 10px 30px rgba(0,0,0,0.2); white-space: nowrap; 
+  box-shadow: 0 10px 30px rgba(0,0,0,0.2); max-width: 90%; text-align: center; 
 }
 .toast.show { transform: translateX(-50%) translateY(0); opacity: 1; }
 
@@ -330,8 +330,10 @@ const GH_DB_URL = "https://raw.githubusercontent.com/lounis0/umx-database/main/f
 let selectedFile = null;
 
 function showToast(msg) { 
-  toast.textContent = msg; toast.classList.add('show'); 
-  clearTimeout(toast._timer); toast._timer = setTimeout(() => toast.classList.remove('show'), 3000); 
+  toast.textContent = msg; 
+  toast.classList.add('show'); 
+  clearTimeout(toast._timer); 
+  toast._timer = setTimeout(() => toast.classList.remove('show'), 4000); 
 }
 
 function formatBytes(bytes) { 
@@ -377,8 +379,10 @@ function handleFile(file) {
 
 async function uploadFile() {
   if (!selectedFile) return showToast('Please select a file first.');
+  
   const title = document.getElementById('metaTitle').value || selectedFile.name;
   const description = document.getElementById('metaDesc').value;
+  
   const formData = new FormData();
   formData.append('file', selectedFile);
   formData.append('title', title);
@@ -407,17 +411,34 @@ async function uploadFile() {
   
   xhr.onload = function() { 
     if (xhr.status === 200) { 
-      showToast('File uploaded successfully!'); 
-      closeModal(); 
-      fetchFiles(); 
+      try {
+        const response = JSON.parse(xhr.responseText);
+        showToast('File uploaded successfully!'); 
+        closeModal(); 
+        fetchFiles(); 
+      } catch(e) {
+        showToast('Upload succeeded, but response was malformed.');
+      }
     } else { 
-      showToast('Upload failed.'); 
+      // Extract the exact error message from the Python server
+      try {
+        const errData = JSON.parse(xhr.responseText);
+        showToast(`Server Error: ${errData.error}`);
+        console.error("Full Server Error:", errData.error);
+      } catch(e) {
+        showToast(`Upload failed. Status: ${xhr.status}`);
+      }
     } 
     submitBtn.innerHTML = '<i data-lucide="check-circle"></i> Save to Cloud'; 
     lucide.createIcons(); 
   };
   
-  xhr.onerror = function() { showToast('Network error.'); submitBtn.innerHTML = '<i data-lucide="check-circle"></i> Save to Cloud'; lucide.createIcons(); };
+  xhr.onerror = function() { 
+    showToast('Network error. Could not reach Render server.'); 
+    submitBtn.innerHTML = '<i data-lucide="check-circle"></i> Save to Cloud'; 
+    lucide.createIcons(); 
+  };
+  
   xhr.open('POST', `${API_BASE}/api/upload`, true);
   xhr.send(formData);
 }
@@ -473,6 +494,7 @@ async function initiateDownload(id, filename) {
   const dlSpeed = document.getElementById('dlSpeed');
   const dlTitle = document.getElementById('dlTitle');
   
+  // Truncate filename if too long
   dlTitle.innerText = filename.length > 20 ? filename.substring(0, 20) + '...' : filename;
   dlToast.classList.add('active');
   dlProgress.style.width = '0%';
@@ -522,11 +544,16 @@ async function copyLink(id) {
 async function deleteFile(id) { 
   if (!confirm('Delete permanently?')) return; 
   try { 
-    await fetch(`${API_BASE}/api/delete/${id}`, { method: 'DELETE' }); 
-    showToast('File deleted.'); 
-    fetchFiles(); 
+    const res = await fetch(`${API_BASE}/api/delete/${id}`, { method: 'DELETE' }); 
+    if (res.ok) { 
+      showToast('File deleted.'); 
+      fetchFiles(); 
+    } else {
+      const errData = await res.json();
+      showToast(`Error: ${errData.error}`);
+    }
   } catch (e) { 
-    showToast('Failed.'); 
+    showToast('Network error.'); 
   } 
 }
 
