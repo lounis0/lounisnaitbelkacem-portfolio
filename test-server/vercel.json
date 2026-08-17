@@ -1,12 +1,8 @@
 {
   "rewrites": [
     {
-      "source": "/UMS/:path*",
-      "destination": "https://umx-music.onrender.com/:path*"
-    },
-    {
-      "source": "/UMS",
-      "destination": "https://umx-music.onrender.com/"
+      "source": "/api/:path*",
+      "destination": "https://umx-music.onrender.com/api/:path*"
     }
   ]
 }
