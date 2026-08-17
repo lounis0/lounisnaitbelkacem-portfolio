@@ -1,0 +1,8 @@
+{
+  "rewrites": [
+    {
+      "source": "/api/(.*)",
+      "destination": "https://umx-music.onrender.com/api/$1"
+    }
+  ]
+}
